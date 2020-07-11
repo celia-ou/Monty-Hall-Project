@@ -5,7 +5,7 @@
  *      Author: Kasagumo
  */
 #include <stdio.h>
-//#include <stdlib.h>
+#include <stdlib.h>
 #define NUM_OF_DOORS 3
 
 enum door_tag {
@@ -35,7 +35,7 @@ int generate_doors(door_t* first_door) {
 	{
 		first_door[i] = GOAT;
 	}
-	int r = random() % NUM_OF_DOORS;
+	int r = rand() % NUM_OF_DOORS;
 	first_door[r] = PRIZE;
 	x = 1; // returns 1 if doors are successfully prepared
 	return x;
@@ -43,8 +43,12 @@ int generate_doors(door_t* first_door) {
 
 int main(int argc, char *argv[]) {
 	printf("This is a simulation of the Monty Hall problem.\n");
-	door_t * set_of_doors;
+	door_t set_of_doors[NUM_OF_DOORS] = {0,0,0};
 	int x = generate_doors(set_of_doors);
+	if (x!=1)
+	{
+		exit(EXIT_FAILURE);
+	}
 	int chosen_door;
 	printf("Choose a door. 1, 2, or 3?\n");
 	scanf("%d",&chosen_door);
