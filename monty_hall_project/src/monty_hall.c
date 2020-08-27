@@ -114,9 +114,8 @@ return final_door;
 
 int process_switch(door_t * first_door, int initial_door, int shown_door) {
 	int final_door;
-	char answer_to_switch;
 	puts("Would you like to switch? (y for yes, n for no)");
-	scanf("%c", &answer_to_switch);
+	char answer_to_switch = fgetc(stdin);
 	switch (answer_to_switch)
 	{
 	case 'y':
